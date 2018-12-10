@@ -24,7 +24,7 @@ public class ImplementacionRMI extends UnicastRemoteObject implements InterfazRM
     }
 
     @Override
-    public List<String> leerArchivo(String nombrePersona) throws RemoteException, FileNotFoundException, IOException {
+    public List<String> leerArchivo(String idPersona) throws RemoteException, FileNotFoundException, IOException {
         String csvFile = "C:\\RMI\\archivo\\RMIArchivodePrueba.csv";
         BufferedReader br = new BufferedReader(new FileReader(csvFile));
         String line = "";
@@ -37,7 +37,7 @@ public class ImplementacionRMI extends UnicastRemoteObject implements InterfazRM
             
             String[] datos = line.replace("|", ",").split(",");
                 
-            if (datos[1].equals(nombrePersona)) {
+            if (datos[0].equals(idPersona)) {
                 persona = new ArrayList<>();
                 persona.add("Id: " + datos[0]);
                 persona.add("Nombre: " + datos[1]);
